@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="site-title-tag">Ameen — Arabic Calligrapher & Creative Designer</title>
+  <title id="site-title-tag">Ameen — Master Arabic Calligrapher & Visual Artist</title>
   
-  <!-- Dynamic Favicon Link -->
+  <!-- Dynamic Favicon -->
   <link id="site-favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✍️</text></svg>">
 
-  <!-- Google Fonts for English and Arabic -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS & Lucide Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
   
   <script>
@@ -29,10 +28,11 @@
             calligraphy: ['Amiri', 'serif']
           },
           colors: {
-            amber: {
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706'
+            accent: {
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              glow: '#818cf8'
             }
           }
         }
@@ -40,68 +40,80 @@
     }
   </script>
   <style>
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #09090b;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #27272a;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #f59e0b;
-    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #070a12; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+
     .glass {
-      background: rgba(24, 24, 27, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
     }
     .light .glass {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-12px) scale(1.02); }
+    }
+    .animate-float { animation: floatSlow 7s ease-in-out infinite; }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+    .animate-glow { animation: pulseGlow 4s ease-in-out infinite; }
+
+    .accent-gradient {
+      background: linear-gradient(135deg, #f8fafc 0%, #38bdf8 50%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   </style>
 </head>
-<body class="bg-zinc-950 text-zinc-50 font-sans transition-colors duration-300 min-h-screen antialiased selection:bg-amber-500 selection:text-black">
+<body class="bg-[#070a12] text-zinc-100 font-sans transition-colors duration-300 min-h-screen antialiased selection:bg-sky-500 selection:text-white">
 
   <!-- ========================================== -->
   <!-- PUBLIC NAVBAR                              -->
   <!-- ========================================== -->
-  <nav id="public-nav" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 border-b border-zinc-800/80 glass">
+  <nav id="public-nav" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 glass">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
+      <div class="flex justify-between items-center h-24">
         <!-- Logo -->
-        <div class="flex-shrink-0 cursor-pointer flex items-center gap-3" onclick="window.navigateTo('home')">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center font-bold text-black text-xl shadow-lg shadow-amber-500/20">
+        <div class="flex-shrink-0 cursor-pointer flex items-center gap-3 group" onclick="window.navigateTo('home')">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-sky-400 to-indigo-600 flex items-center justify-center font-bold text-white text-xl shadow-xl shadow-sky-500/20 group-hover:scale-105 transition-transform">
             أ
           </div>
-          <span id="logo-text" class="text-2xl font-extrabold tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-400">
+          <span id="logo-text" class="text-2xl font-extrabold tracking-widest accent-gradient">
             AMEEN.
           </span>
         </div>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-          <button onclick="window.navigateTo('home')" class="hover:text-amber-500 transition-colors px-2 font-medium" data-i18n="home">Home</button>
-          <button onclick="window.scrollToSection('portfolio')" class="hover:text-amber-500 transition-colors px-2 font-medium" data-i18n="projects">Projects</button>
-          <button onclick="window.scrollToSection('about')" class="hover:text-amber-500 transition-colors px-2 font-medium" data-i18n="about">About</button>
-          <button onclick="window.scrollToSection('contact')" class="hover:text-amber-500 transition-colors px-2 font-medium" data-i18n="contact">Contact</button>
+        <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse font-medium text-sm">
+          <button onclick="window.navigateTo('home')" class="hover:text-sky-400 transition-colors px-2" data-i18n="home">Home</button>
+          <button onclick="window.scrollToSection('portfolio')" class="hover:text-sky-400 transition-colors px-2" data-i18n="projects">Projects</button>
+          <button onclick="window.scrollToSection('services')" class="hover:text-sky-400 transition-colors px-2" data-i18n="services">Services</button>
+          <button onclick="window.scrollToSection('about')" class="hover:text-sky-400 transition-colors px-2" data-i18n="about">About</button>
+          <button onclick="window.scrollToSection('contact')" class="hover:text-sky-400 transition-colors px-2" data-i18n="contact">Contact</button>
 
           <div class="flex items-center gap-3 border-l dark:border-zinc-800 border-zinc-300 pl-6 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-6">
             <!-- Theme Toggle -->
-            <button onclick="window.toggleTheme()" class="p-2.5 rounded-full hover:bg-zinc-800 dark:hover:bg-zinc-800 hover:bg-zinc-200 transition-colors" title="Toggle Mode">
-              <i data-lucide="sun" id="theme-icon-sun" class="w-5 h-5 text-amber-500 hidden"></i>
+            <button onclick="window.toggleTheme()" class="p-2.5 rounded-full hover:bg-zinc-800 transition-colors" title="Toggle Mode">
+              <i data-lucide="sun" id="theme-icon-sun" class="w-5 h-5 text-sky-400 hidden"></i>
               <i data-lucide="moon" id="theme-icon-moon" class="w-5 h-5 text-zinc-400"></i>
             </button>
             <!-- Language Switcher -->
-            <button onclick="window.toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-zinc-800 dark:hover:bg-zinc-800 hover:bg-zinc-200 transition-colors font-semibold text-sm border border-zinc-700/50">
-              <i data-lucide="globe" class="w-4 h-4 text-amber-500"></i>
+            <button onclick="window.toggleLanguage()" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full hover:bg-zinc-800 transition-colors font-semibold text-xs border border-zinc-700/50">
+              <i data-lucide="globe" class="w-3.5 h-3.5 text-sky-400"></i>
               <span id="lang-label">العربية</span>
             </button>
             <!-- Admin CMS Login -->
-            <button onclick="window.navigateTo('admin')" class="text-xs px-4 py-2 rounded-full border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black font-bold transition-all shadow-md shadow-amber-500/10">
+            <button onclick="window.navigateTo('admin')" class="text-xs px-4 py-2 rounded-full border border-sky-500/50 text-sky-400 hover:bg-sky-500 hover:text-white font-bold transition-all shadow-md shadow-sky-500/10">
               <span data-i18n="adminPanel">Admin CMS</span>
             </button>
           </div>
@@ -120,16 +132,17 @@
     </div>
     
     <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden border-b border-zinc-800 bg-zinc-950/95 px-4 pt-2 pb-6 space-y-3 text-center">
-      <button onclick="window.navigateTo('home'); window.toggleMobileMenu()" class="block w-full py-2 hover:text-amber-500 font-medium" data-i18n="home">Home</button>
-      <button onclick="window.scrollToSection('portfolio'); window.toggleMobileMenu()" class="block w-full py-2 hover:text-amber-500 font-medium" data-i18n="projects">Projects</button>
-      <button onclick="window.scrollToSection('about'); window.toggleMobileMenu()" class="block w-full py-2 hover:text-amber-500 font-medium" data-i18n="about">About</button>
-      <button onclick="window.scrollToSection('contact'); window.toggleMobileMenu()" class="block w-full py-2 hover:text-amber-500 font-medium" data-i18n="contact">Contact</button>
+    <div id="mobile-menu" class="hidden md:hidden border-b border-zinc-800 bg-[#070a12]/95 px-6 pt-4 pb-8 space-y-4 text-center">
+      <button onclick="window.navigateTo('home'); window.toggleMobileMenu()" class="block w-full py-2 hover:text-sky-400 font-medium" data-i18n="home">Home</button>
+      <button onclick="window.scrollToSection('portfolio'); window.toggleMobileMenu()" class="block w-full py-2 hover:text-sky-400 font-medium" data-i18n="projects">Projects</button>
+      <button onclick="window.scrollToSection('services'); window.toggleMobileMenu()" class="block w-full py-2 hover:text-sky-400 font-medium" data-i18n="services">Services</button>
+      <button onclick="window.scrollToSection('about'); window.toggleMobileMenu()" class="block w-full py-2 hover:text-sky-400 font-medium" data-i18n="about">About</button>
+      <button onclick="window.scrollToSection('contact'); window.toggleMobileMenu()" class="block w-full py-2 hover:text-sky-400 font-medium" data-i18n="contact">Contact</button>
       <div class="pt-4 flex justify-center gap-4">
         <button onclick="window.toggleLanguage()" class="px-4 py-2 rounded-full border border-zinc-700 text-sm font-bold flex items-center gap-2">
-          <i data-lucide="globe" class="w-4 h-4 text-amber-500"></i> <span id="mobile-lang-label">العربية</span>
+          <i data-lucide="globe" class="w-4 h-4 text-sky-400"></i> <span id="mobile-lang-label">العربية</span>
         </button>
-        <button onclick="window.navigateTo('admin'); window.toggleMobileMenu()" class="px-4 py-2 rounded-full bg-amber-500 text-black font-bold text-sm">
+        <button onclick="window.navigateTo('admin'); window.toggleMobileMenu()" class="px-5 py-2 rounded-full bg-sky-500 text-white font-bold text-sm">
           Admin CMS
         </button>
       </div>
@@ -139,65 +152,121 @@
   <!-- ========================================== -->
   <!-- VIEW 1: PUBLIC HOME & PORTFOLIO            -->
   <!-- ========================================== -->
-  <main id="view-home" class="pt-20">
+  <main id="view-home" class="pt-24">
     <!-- Hero Section -->
-    <section class="relative min-h-[88vh] flex items-center justify-center overflow-hidden py-16">
-      <div class="absolute inset-0 z-0 opacity-30 pointer-events-none">
-        <div class="absolute top-[10%] left-[10%] w-[45vw] h-[45vw] rounded-full bg-gradient-to-br from-amber-500/30 to-transparent blur-3xl"></div>
-        <div class="absolute bottom-[10%] right-[10%] w-[50vw] h-[50vw] rounded-full bg-gradient-to-tl from-zinc-700/30 to-transparent blur-3xl"></div>
+    <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden py-24">
+      <!-- Glowing Background Orbs -->
+      <div class="absolute inset-0 z-0 opacity-40 pointer-events-none overflow-hidden">
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-gradient-to-tr from-sky-600/20 via-indigo-600/15 to-transparent blur-[140px] animate-float"></div>
       </div>
 
-      <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <!-- Calligraphic Subtitle Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 font-semibold text-sm mb-8 animate-fade-in">
+      <div class="relative z-10 max-w-5xl mx-auto px-6 text-center space-y-8">
+        <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-sky-500/10 border border-sky-500/25 text-sky-400 font-semibold text-xs tracking-wider uppercase shadow-2xl shadow-sky-500/10 animate-glow">
           <i data-lucide="sparkles" class="w-4 h-4"></i>
-          <span data-i18n="heroBadge">Creative Visual Studio</span>
+          <span data-i18n="heroBadge">Master Calligrapher & Brand Architect</span>
         </div>
 
-        <h1 id="hero-title" class="text-6xl md:text-8xl lg:text-9xl font-extrabold mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-100 to-zinc-500">
+        <h1 id="hero-title" class="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tight accent-gradient leading-none">
           AMEEN
         </h1>
 
-        <p id="hero-subtitle" class="text-xl md:text-3xl text-amber-500 font-semibold mb-6 tracking-wide">
+        <p id="hero-subtitle" class="text-xl md:text-3xl text-zinc-300 font-light tracking-wide font-serif">
           Arabic Calligrapher • Graphic Designer • Digital Artist
         </p>
 
-        <p id="hero-desc" class="text-lg md:text-xl text-zinc-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-          I transform ideas, words and imagination into meaningful visual experiences through Arabic calligraphy, graphic design and digital art.
+        <p id="hero-desc" class="text-base md:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed font-light">
+          I transform ideas, words and imagination into meaningful visual experiences through classical Arabic calligraphy, modern graphic design and digital art.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button onclick="window.scrollToSection('portfolio')" class="w-full sm:w-auto px-8 py-4 rounded-full bg-amber-500 text-black font-extrabold hover:bg-amber-400 transition-all transform hover:-translate-y-0.5 shadow-xl shadow-amber-500/20 flex items-center justify-center gap-2">
-            <span data-i18n="viewWork">View My Work</span>
+        <div class="flex flex-col sm:flex-row gap-5 justify-center items-center pt-4">
+          <button onclick="window.scrollToSection('portfolio')" class="w-full sm:w-auto px-9 py-4 rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-extrabold hover:from-sky-400 hover:to-indigo-500 transition-all transform hover:-translate-y-0.5 shadow-2xl shadow-sky-500/30 flex items-center justify-center gap-3">
+            <span data-i18n="viewWork">Explore Portfolio</span>
             <i data-lucide="arrow-down" class="w-5 h-5"></i>
           </button>
-          <button onclick="window.scrollToSection('about')" class="w-full sm:w-auto px-8 py-4 rounded-full border border-zinc-700 hover:border-zinc-500 font-bold text-zinc-300 hover:text-white transition-all flex items-center justify-center gap-2">
-            <span data-i18n="aboutMe">About Me</span>
+          <button onclick="window.scrollToSection('about')" class="w-full sm:w-auto px-9 py-4 rounded-full border border-zinc-700/80 hover:border-sky-500/50 font-bold text-zinc-300 hover:text-white transition-all flex items-center justify-center gap-2 bg-zinc-900/40 backdrop-blur-md">
+            <span data-i18n="aboutMe">Meet The Artist</span>
           </button>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 max-w-4xl mx-auto border-t border-zinc-900/80">
+          <div class="text-center transform hover:scale-105 transition-transform">
+            <h4 class="text-3xl md:text-4xl font-extrabold text-sky-400">8+</h4>
+            <p class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Years Experience</p>
+          </div>
+          <div class="text-center transform hover:scale-105 transition-transform">
+            <h4 class="text-3xl md:text-4xl font-extrabold text-white">150+</h4>
+            <p class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Projects Completed</p>
+          </div>
+          <div class="text-center transform hover:scale-105 transition-transform">
+            <h4 class="text-3xl md:text-4xl font-extrabold text-sky-400">12+</h4>
+            <p class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Global Exhibitions</p>
+          </div>
+          <div class="text-center transform hover:scale-105 transition-transform">
+            <h4 class="text-3xl md:text-4xl font-extrabold text-white">100%</h4>
+            <p class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Client Delight</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-[#090e18] border-y border-zinc-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-sky-400 font-bold uppercase tracking-widest text-xs" data-i18n="servicesSub">Expertise & Offerings</span>
+          <h2 class="text-4xl md:text-5xl font-extrabold mt-2 text-white">Creative Services</h2>
+          <p class="text-zinc-400 mt-4">Delivering bespoke visual artistry rooted in cultural heritage and driven by contemporary design principles.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-8 rounded-3xl bg-zinc-900/60 border border-zinc-800/80 hover:border-sky-500/50 transition-all duration-300 group hover:-translate-y-1 shadow-xl">
+            <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+              ✍️
+            </div>
+            <h3 class="text-2xl font-bold mb-3 text-white">Arabic Calligraphy</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Traditional Thuluth, Naskh, Diwani, and Kufic script compositions crafted for branding, fine art prints, and architectural installations.</p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-zinc-900/60 border border-zinc-800/80 hover:border-sky-500/50 transition-all duration-300 group hover:-translate-y-1 shadow-xl">
+            <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+              ✨
+            </div>
+            <h3 class="text-2xl font-bold mb-3 text-white">Logo & Brand Identity</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Unique corporate and cultural visual identities that integrate sophisticated typographic emblems with modern minimalist aesthetics.</p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-zinc-900/60 border border-zinc-800/80 hover:border-sky-500/50 transition-all duration-300 group hover:-translate-y-1 shadow-xl">
+            <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+              🖼️
+            </div>
+            <h3 class="text-2xl font-bold mb-3 text-white">Poster & Digital Art</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Striking promotional posters, event identities, and experimental digital canvases designed to captivate and communicate deeply.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Main Portfolio Gallery -->
-    <section id="portfolio" class="py-24 border-t border-zinc-900 bg-zinc-950">
+    <section id="portfolio" class="py-24 bg-[#070a12]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
           <div>
-            <span class="text-amber-500 font-bold uppercase tracking-widest text-sm" data-i18n="portfolioSubtitle">Selected Artworks</span>
-            <h2 class="text-4xl md:text-5xl font-extrabold mt-2" data-i18n="portfolioTitle">Portfolio Gallery</h2>
+            <span class="text-sky-400 font-bold uppercase tracking-widest text-xs" data-i18n="portfolioSubtitle">Selected Artworks</span>
+            <h2 class="text-4xl md:text-5xl font-extrabold mt-2 text-white" data-i18n="portfolioTitle">Portfolio Gallery</h2>
           </div>
 
           <!-- Live Search Bar -->
           <div class="relative w-full md:w-72">
             <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3.5 text-zinc-500 rtl:left-auto rtl:right-3.5"></i>
-            <input type="text" id="search-input" onkeyup="window.renderGallery()" placeholder="Search projects..." class="w-full bg-zinc-900 border border-zinc-800 rounded-full pl-10 pr-4 rtl:pl-4 rtl:pr-10 py-2.5 text-sm focus:outline-none focus:border-amber-500 transition-colors">
+            <input type="text" id="search-input" onkeyup="window.renderGallery()" placeholder="Search projects..." class="w-full bg-zinc-900 border border-zinc-800 rounded-full pl-10 pr-4 rtl:pl-4 rtl:pr-10 py-2.5 text-sm focus:outline-none focus:border-sky-500 transition-colors">
           </div>
         </div>
 
         <!-- Category Filter Buttons -->
-        <div class="flex flex-wrap gap-2 mb-12" id="category-filters">
-          <button onclick="window.setCategoryFilter('all')" data-cat="all" class="cat-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-amber-500 text-black shadow-lg shadow-amber-500/20">All Works</button>
+        <div class="flex flex-wrap gap-2.5 mb-14" id="category-filters">
+          <button onclick="window.setCategoryFilter('all')" data-cat="all" class="cat-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-sky-500 text-white shadow-lg shadow-sky-500/20">All Works</button>
           <button onclick="window.setCategoryFilter('calligraphy')" data-cat="calligraphy" class="cat-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700">Arabic Calligraphy</button>
           <button onclick="window.setCategoryFilter('graphic-design')" data-cat="graphic-design" class="cat-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700">Graphic Design</button>
           <button onclick="window.setCategoryFilter('posters')" data-cat="posters" class="cat-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700">Posters</button>
@@ -213,17 +282,17 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 bg-zinc-900/40 border-y border-zinc-900">
+    <section id="about" class="py-24 bg-[#090e18] border-y border-zinc-900">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           <!-- Profile Card -->
           <div class="lg:col-span-5 relative group">
-            <div class="absolute inset-0 bg-gradient-to-tr from-amber-500 to-amber-700 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+            <div class="absolute inset-0 bg-gradient-to-tr from-sky-500 to-indigo-600 rounded-3xl blur-3xl opacity-20 group-hover:opacity-35 transition-opacity"></div>
             <div class="relative rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl">
-              <img id="about-profile-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80" alt="Ameen Profile" class="w-full h-[480px] object-cover transition-all duration-300">
-              <div class="p-6 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent absolute bottom-0 inset-x-0">
-                <h3 id="about-name-display" class="text-2xl font-bold">Ameen</h3>
-                <p id="about-role-display" class="text-amber-500 font-medium text-sm">Calligrapher & Visual Artist</p>
+              <img id="about-profile-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80" alt="Ameen Profile" class="w-full h-[520px] object-cover transition-all duration-500 group-hover:scale-105">
+              <div class="p-8 bg-gradient-to-t from-black via-black/80 to-transparent absolute bottom-0 inset-x-0">
+                <h3 id="about-name-display" class="text-3xl font-extrabold text-white">Ameen</h3>
+                <p id="about-role-display" class="text-sky-400 font-medium text-sm mt-1">Master Calligrapher & Visual Artist</p>
               </div>
             </div>
           </div>
@@ -231,48 +300,48 @@
           <!-- Biography & Skills -->
           <div class="lg:col-span-7 space-y-8">
             <div>
-              <span class="text-amber-500 font-bold uppercase tracking-widest text-sm" data-i18n="aboutTitle">Craft & Heritage</span>
-              <h2 class="text-4xl font-extrabold mt-2 mb-6" data-i18n="aboutHeading">Blending Arabic Typography with Modern Visual Identity</h2>
-              <p class="text-zinc-400 text-lg leading-relaxed mb-4" id="bio-p1">
+              <span class="text-sky-400 font-bold uppercase tracking-widest text-xs" data-i18n="aboutTitle">Craft & Heritage</span>
+              <h2 class="text-4xl md:text-5xl font-extrabold mt-2 mb-6 text-white" data-i18n="aboutHeading">Bridging Ancient Arabic Script with Modern Visual Language</h2>
+              <p class="text-zinc-400 text-lg leading-relaxed mb-6 font-light" id="bio-p1">
                 I am a professional creative artist specializing in blending traditional Arabic calligraphy with modern digital aesthetics. With expertise in graphic design, logo design, poster artwork, and branding, I craft visual experiences that preserve rich script heritage while commanding contemporary appeal.
               </p>
             </div>
 
             <!-- Animated Skill Badges -->
             <div>
-              <h3 class="text-xl font-bold mb-4" data-i18n="skillsTitle">Core Capabilities</h3>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div class="p-3.5 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+              <h3 class="text-xl font-bold mb-5 text-white" data-i18n="skillsTitle">Core Capabilities</h3>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                <div class="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/50 transition-colors flex items-center gap-3">
                   <span class="text-xl">✍️</span>
-                  <span class="text-xs font-bold">Arabic Calligraphy</span>
+                  <span class="text-xs font-bold text-zinc-200">Arabic Calligraphy</span>
                 </div>
-                <div class="p-3.5 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+                <div class="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/50 transition-colors flex items-center gap-3">
                   <span class="text-xl">🎨</span>
-                  <span class="text-xs font-bold">Graphic Design</span>
+                  <span class="text-xs font-bold text-zinc-200">Graphic Design</span>
                 </div>
-                <div class="p-3.5 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+                <div class="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/50 transition-colors flex items-center gap-3">
                   <span class="text-xl">🖼️</span>
-                  <span class="text-xs font-bold">Photoshop</span>
+                  <span class="text-xs font-bold text-zinc-200">Photoshop</span>
                 </div>
-                <div class="p-3.5 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+                <div class="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/50 transition-colors flex items-center gap-3">
                   <span class="text-xl">✒️</span>
-                  <span class="text-xs font-bold">Illustrator</span>
+                  <span class="text-xs font-bold text-zinc-200">Illustrator</span>
                 </div>
-                <div class="p-3.5 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+                <div class="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/50 transition-colors flex items-center gap-3">
                   <span class="text-xl">✨</span>
-                  <span class="text-xs font-bold">Logo Design</span>
+                  <span class="text-xs font-bold text-zinc-200">Logo Design</span>
                 </div>
-                <div class="p-3.5 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+                <div class="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/50 transition-colors flex items-center gap-3">
                   <span class="text-xl">🔤</span>
-                  <span class="text-xs font-bold">Typography</span>
+                  <span class="text-xs font-bold text-zinc-200">Typography</span>
                 </div>
-                <div class="p-3.5 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+                <div class="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/50 transition-colors flex items-center gap-3">
                   <span class="text-xl">💻</span>
-                  <span class="text-xs font-bold">Digital Art</span>
+                  <span class="text-xs font-bold text-zinc-200">Digital Art</span>
                 </div>
-                <div class="p-3.5 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center gap-3">
+                <div class="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/50 transition-colors flex items-center gap-3">
                   <span class="text-xl">🏆</span>
-                  <span class="text-xs font-bold">Branding</span>
+                  <span class="text-xs font-bold text-zinc-200">Branding</span>
                 </div>
               </div>
             </div>
@@ -282,28 +351,28 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24">
+    <section id="contact" class="py-24 bg-[#070a12]">
       <div class="max-w-3xl mx-auto px-4 text-center">
-        <span class="text-amber-500 font-bold uppercase tracking-widest text-sm" data-i18n="contactSub">Get In Touch</span>
-        <h2 class="text-4xl font-extrabold mt-2 mb-4" data-i18n="contactTitle">Let's Create Something Iconic</h2>
-        <p class="text-zinc-400 mb-10" data-i18n="contactDesc">Send a message for commissions, brand inquiries, or collaborative creative projects.</p>
+        <span class="text-sky-400 font-bold uppercase tracking-widest text-xs" data-i18n="contactSub">Get In Touch</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold mt-2 mb-4 text-white" data-i18n="contactTitle">Let's Create Something Iconic</h2>
+        <p class="text-zinc-400 mb-12 font-light" data-i18n="contactDesc">Send a message for commissions, brand inquiries, or collaborative creative projects.</p>
 
-        <form id="contact-form" onsubmit="window.handleContactSubmit(event)" class="space-y-6 text-left rtl:text-right">
+        <form id="contact-form" onsubmit="window.handleContactSubmit(event)" class="space-y-6 text-left rtl:text-right bg-zinc-900/50 border border-zinc-800/80 p-8 md:p-12 rounded-3xl shadow-2xl">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm font-medium mb-2" data-i18n="yourName">Your Name</label>
-              <input type="text" id="contact-name" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3.5 focus:outline-none focus:border-amber-500 transition-colors">
+              <label class="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2" data-i18n="yourName">Your Name</label>
+              <input type="text" id="contact-name" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3.5 focus:outline-none focus:border-sky-500 transition-colors text-sm text-white">
             </div>
             <div>
-              <label class="block text-sm font-medium mb-2" data-i18n="yourEmail">Your Email</label>
-              <input type="email" id="contact-email" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3.5 focus:outline-none focus:border-amber-500 transition-colors">
+              <label class="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2" data-i18n="yourEmail">Your Email</label>
+              <input type="email" id="contact-email" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3.5 focus:outline-none focus:border-sky-500 transition-colors text-sm text-white">
             </div>
           </div>
           <div>
-            <label class="block text-sm font-medium mb-2" data-i18n="yourMessage">Your Message</label>
-            <textarea id="contact-message" rows="5" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3.5 focus:outline-none focus:border-amber-500 transition-colors"></textarea>
+            <label class="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2" data-i18n="yourMessage">Your Message</label>
+            <textarea id="contact-message" rows="5" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3.5 focus:outline-none focus:border-sky-500 transition-colors text-sm text-white"></textarea>
           </div>
-          <button type="submit" id="contact-submit-btn" class="w-full bg-amber-500 text-black font-extrabold py-4 rounded-xl hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/10">
+          <button type="submit" id="contact-submit-btn" class="w-full bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-extrabold py-4 rounded-xl hover:from-sky-400 hover:to-indigo-500 transition-colors shadow-xl shadow-sky-500/25">
             <span data-i18n="sendMessage">Send Message</span>
           </button>
           <div id="contact-status" class="hidden p-4 rounded-xl bg-green-900/40 border border-green-500 text-green-300 text-center font-medium"></div>
@@ -313,49 +382,49 @@
   </main>
 
   <!-- ========================================== -->
-  <!-- VIEW 2: PROJECT DETAIL (CLEAN UNCOVERED)   -->
+  <!-- VIEW 2: PROJECT DETAIL                     -->
   <!-- ========================================== -->
-  <main id="view-project-detail" class="hidden pt-24 pb-20">
+  <main id="view-project-detail" class="hidden pt-28 pb-24 bg-[#070a12] min-h-screen">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Back Button -->
-      <button onclick="window.navigateTo('home')" class="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 hover:border-amber-500 transition-all text-sm font-bold text-zinc-300">
+      <button onclick="window.navigateTo('home')" class="inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full bg-zinc-900 border border-zinc-800 hover:border-sky-500 transition-all text-sm font-bold text-zinc-300">
         <i data-lucide="arrow-left" class="w-4 h-4 rtl:rotate-180"></i>
         <span data-i18n="backToGallery">Back to Gallery</span>
       </button>
 
       <!-- Project Image Container -->
-      <div class="relative w-full max-h-[70vh] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 cursor-pointer shadow-2xl group" onclick="window.openLightbox()">
-        <img id="detail-cover-img" src="" alt="Project Image" class="w-full h-full object-contain max-h-[70vh] mx-auto">
-        <div class="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-semibold text-zinc-300 flex items-center gap-1.5 group-hover:text-amber-500 transition-colors">
-          <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Click to Zoom Full Artwork
+      <div class="relative w-full max-h-[75vh] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 cursor-pointer shadow-2xl group" onclick="window.openLightbox()">
+        <img id="detail-cover-img" src="" alt="Project Image" class="w-full h-full object-contain max-h-[75vh] mx-auto">
+        <div class="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-4 py-2 rounded-full text-xs font-semibold text-zinc-300 flex items-center gap-2 group-hover:text-sky-400 transition-colors">
+          <i data-lucide="maximize-2" class="w-4 h-4"></i> Click to Zoom Full Artwork
         </div>
       </div>
 
       <!-- Detail Card -->
-      <div class="mt-8 bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-12 shadow-2xl space-y-8">
+      <div class="mt-8 bg-zinc-900/80 border border-zinc-800 rounded-3xl p-8 md:p-12 shadow-2xl space-y-8">
         <div>
-          <span id="detail-category" class="text-amber-500 font-bold uppercase tracking-widest text-sm">Category</span>
+          <span id="detail-category" class="text-sky-400 font-bold uppercase tracking-widest text-xs">Category</span>
           <h1 id="detail-title" class="text-4xl md:text-5xl font-extrabold mt-2 text-white">Project Title</h1>
         </div>
 
         <!-- Metadata Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 py-6 border-y border-zinc-800 text-sm">
           <div>
-            <strong class="block text-zinc-400 font-medium mb-1" data-i18n="date">Date</strong>
+            <strong class="block text-zinc-500 font-medium mb-1 uppercase tracking-wider text-xs" data-i18n="date">Date</strong>
             <span id="detail-date" class="font-semibold text-zinc-200">2025</span>
           </div>
           <div>
-            <strong class="block text-zinc-400 font-medium mb-1" data-i18n="toolsUsed">Tools Used</strong>
+            <strong class="block text-zinc-500 font-medium mb-1 uppercase tracking-wider text-xs" data-i18n="toolsUsed">Tools Used</strong>
             <span id="detail-tools" class="font-semibold text-zinc-200">Adobe Illustrator</span>
           </div>
           <div>
-            <strong class="block text-zinc-400 font-medium mb-1">Tags</strong>
+            <strong class="block text-zinc-500 font-medium mb-1 uppercase tracking-wider text-xs">Tags</strong>
             <div id="detail-tags" class="flex flex-wrap gap-1.5 mt-1"></div>
           </div>
         </div>
 
         <!-- Project Description -->
-        <div class="prose prose-invert max-w-none text-zinc-300 text-lg leading-relaxed" id="detail-desc">
+        <div class="prose prose-invert max-w-none text-zinc-300 text-lg leading-relaxed font-light" id="detail-desc">
           Detailed artwork description will be presented here.
         </div>
       </div>
@@ -367,9 +436,9 @@
   <!-- ========================================== -->
   <main id="view-admin" class="hidden">
     <!-- Login View -->
-    <div id="admin-login-screen" class="min-h-screen flex items-center justify-center p-4 bg-zinc-950">
+    <div id="admin-login-screen" class="min-h-screen flex items-center justify-center p-4 bg-[#070a12]">
       <div class="w-full max-w-md bg-zinc-900 p-8 rounded-3xl border border-zinc-800 shadow-2xl text-center space-y-6">
-        <div class="w-14 h-14 rounded-2xl bg-amber-500 text-black flex items-center justify-center font-bold text-2xl mx-auto shadow-lg shadow-amber-500/20">
+        <div class="w-14 h-14 rounded-2xl bg-sky-500 text-white flex items-center justify-center font-bold text-2xl mx-auto shadow-lg shadow-sky-500/20">
           أ
         </div>
         <div>
@@ -380,10 +449,10 @@
         <form onsubmit="window.handleAdminLogin(event)" class="space-y-4">
           <div>
             <label class="block text-xs font-bold text-zinc-400 mb-2 uppercase tracking-wider text-left rtl:text-right">Enter Admin Security PIN</label>
-            <input type="password" id="admin-pin-input" placeholder="••••••••" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3.5 text-center text-2xl tracking-[0.4em] font-mono focus:outline-none focus:border-amber-500 transition-colors">
-            <p id="pin-hint-text" class="text-xs text-amber-500/80 mt-2">Enter your Admin PIN</p>
+            <input type="password" id="admin-pin-input" placeholder="••••••••" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3.5 text-center text-2xl tracking-[0.4em] font-mono focus:outline-none focus:border-sky-500 transition-colors text-white">
+            <p id="pin-hint-text" class="text-xs text-sky-400/80 mt-2">Default PIN: <strong>ameen2026</strong></p>
           </div>
-          <button type="submit" class="w-full bg-amber-500 text-black font-extrabold py-3.5 rounded-xl hover:bg-amber-400 transition-colors">
+          <button type="submit" class="w-full bg-sky-500 text-white font-extrabold py-3.5 rounded-xl hover:bg-sky-400 transition-colors">
             Access CMS
           </button>
         </form>
@@ -395,15 +464,15 @@
     </div>
 
     <!-- Admin CMS Dashboard Interface -->
-    <div id="admin-dashboard-screen" class="hidden min-h-screen flex">
+    <div id="admin-dashboard-screen" class="hidden min-h-screen flex bg-[#070a12]">
       <!-- Sidebar -->
       <aside class="w-64 bg-zinc-900 border-r border-zinc-800 hidden md:flex flex-col sticky top-0 h-screen">
         <div class="p-6 border-b border-zinc-800 flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg bg-amber-500 text-black font-bold flex items-center justify-center">أ</div>
+          <div class="w-8 h-8 rounded-lg bg-sky-500 text-white font-bold flex items-center justify-center">أ</div>
           <span class="font-bold text-lg text-white">Ameen CMS</span>
         </div>
         <nav class="flex-1 p-4 space-y-2">
-          <button onclick="window.setAdminTab('overview')" id="tab-btn-overview" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors bg-amber-500/10 text-amber-500 font-bold">
+          <button onclick="window.setAdminTab('overview')" id="tab-btn-overview" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors bg-sky-500/10 text-sky-400 font-bold">
             <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Overview
           </button>
           <button onclick="window.setAdminTab('projects')" id="tab-btn-projects" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800">
@@ -413,7 +482,7 @@
             <i data-lucide="user" class="w-5 h-5"></i> Edit About Me
           </button>
           <button onclick="window.setAdminTab('settings')" id="tab-btn-settings" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800">
-            <i data-lucide="settings" class="w-5 h-5"></i> Favicon & Site Settings
+            <i data-lucide="settings" class="w-5 h-5"></i> Site Settings
           </button>
           <button onclick="window.setAdminTab('messages')" id="tab-btn-messages" class="w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium text-sm transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800">
             <div class="flex items-center gap-3">
@@ -442,7 +511,7 @@
         <div id="admin-tab-overview" class="space-y-8">
           <div class="flex justify-between items-center">
             <h1 class="text-3xl font-extrabold text-white">CMS Dashboard Overview</h1>
-            <button onclick="window.openProjectModal()" class="bg-amber-500 text-black px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-amber-400 transition-colors">
+            <button onclick="window.openProjectModal()" class="bg-sky-500 text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-sky-400 transition-colors">
               <i data-lucide="plus" class="w-5 h-5"></i> Add Project
             </button>
           </div>
@@ -459,7 +528,7 @@
             </div>
             <div class="p-6 rounded-2xl bg-zinc-900 border border-zinc-800">
               <p class="text-sm font-medium text-zinc-400 mb-1">Drafts</p>
-              <h3 id="stat-drafts" class="text-4xl font-extrabold text-amber-500">0</h3>
+              <h3 id="stat-drafts" class="text-4xl font-extrabold text-sky-400">0</h3>
             </div>
             <div class="p-6 rounded-2xl bg-zinc-900 border border-zinc-800">
               <p class="text-sm font-medium text-zinc-400 mb-1">Messages</p>
@@ -472,7 +541,7 @@
         <div id="admin-tab-projects" class="hidden space-y-6">
           <div class="flex justify-between items-center">
             <h1 class="text-3xl font-extrabold text-white">Project Management</h1>
-            <button onclick="window.openProjectModal()" class="bg-amber-500 text-black px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-amber-400 transition-colors">
+            <button onclick="window.openProjectModal()" class="bg-sky-500 text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-sky-400 transition-colors">
               <i data-lucide="plus" class="w-5 h-5"></i> Create Project
             </button>
           </div>
@@ -501,15 +570,15 @@
         <div id="admin-tab-about" class="hidden space-y-8 max-w-4xl">
           <div>
             <h1 class="text-3xl font-extrabold text-white">Edit Profile & Biography</h1>
-            <p class="text-zinc-400 text-sm mt-1">Manage your photo, artist name, titles, and bio displayed on the public website.</p>
+            <p class="text-zinc-400 text-sm mt-1">Upload your profile photo from your device and manage your bio.</p>
           </div>
 
           <form onsubmit="window.handleAboutSave(event)" class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 space-y-6">
-            <!-- Photo Upload Link -->
             <div>
-              <label class="block text-xs font-bold text-amber-500 uppercase tracking-wider mb-2">Profile Photo Image URL</label>
-              <input type="url" id="form-about-img" required placeholder="Paste Image URL here..." class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-amber-500 text-sm">
-              <p class="text-xs text-zinc-500 mt-2">Paste any direct image link to change your profile picture.</p>
+              <label class="block text-xs font-bold text-sky-400 uppercase tracking-wider mb-2">Upload Profile Photo from Device</label>
+              <input type="file" id="form-about-file" accept="image/*" onchange="window.handleAboutImageUpload(event)" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-300 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-sky-500 file:text-white hover:file:bg-sky-400 cursor-pointer">
+              <input type="hidden" id="form-about-img">
+              <p class="text-xs text-zinc-500 mt-2">Select any photo from your computer or phone.</p>
               
               <!-- Live Preview -->
               <div class="mt-4 flex items-center gap-4">
@@ -522,11 +591,11 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-zinc-800">
               <div>
                 <label class="block text-xs font-bold text-zinc-400 mb-1">Name (English)</label>
-                <input type="text" id="form-about-name-en" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500 text-sm">
+                <input type="text" id="form-about-name-en" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-sm text-white">
               </div>
               <div dir="rtl">
                 <label class="block text-xs font-bold text-zinc-400 mb-1">الاسم (عربي)</label>
-                <input type="text" id="form-about-name-ar" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500 text-sm">
+                <input type="text" id="form-about-name-ar" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-sm text-white">
               </div>
             </div>
 
@@ -534,11 +603,11 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label class="block text-xs font-bold text-zinc-400 mb-1">Creative Title / Role (English)</label>
-                <input type="text" id="form-about-role-en" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500 text-sm">
+                <input type="text" id="form-about-role-en" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-sm text-white">
               </div>
               <div dir="rtl">
                 <label class="block text-xs font-bold text-zinc-400 mb-1">المسمى الإبداعي (عربي)</label>
-                <input type="text" id="form-about-role-ar" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500 text-sm">
+                <input type="text" id="form-about-role-ar" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-sm text-white">
               </div>
             </div>
 
@@ -546,16 +615,16 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label class="block text-xs font-bold text-zinc-400 mb-1">Biography (English)</label>
-                <textarea id="form-about-bio-en" rows="5" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500 text-sm leading-relaxed"></textarea>
+                <textarea id="form-about-bio-en" rows="5" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-sm text-white leading-relaxed"></textarea>
               </div>
               <div dir="rtl">
                 <label class="block text-xs font-bold text-zinc-400 mb-1">السيرة الذاتية (عربي)</label>
-                <textarea id="form-about-bio-ar" rows="5" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500 text-sm leading-relaxed"></textarea>
+                <textarea id="form-about-bio-ar" rows="5" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-sm text-white leading-relaxed"></textarea>
               </div>
             </div>
 
             <div class="flex justify-end pt-4 border-t border-zinc-800">
-              <button type="submit" class="bg-amber-500 text-black font-extrabold px-8 py-3 rounded-xl hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/10">
+              <button type="submit" class="bg-sky-500 text-white font-extrabold px-8 py-3 rounded-xl hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20">
                 Save Profile Settings
               </button>
             </div>
@@ -565,38 +634,26 @@
           </form>
         </div>
 
-        <!-- Favicon & Website Settings Tab -->
+        <!-- Site Settings Tab -->
         <div id="admin-tab-settings" class="hidden space-y-8 max-w-2xl">
           <div>
-            <h1 class="text-3xl font-extrabold text-white">Favicon & Site Settings</h1>
-            <p class="text-zinc-400 text-sm mt-1">Customize your website's browser tab favicon icon and page title.</p>
+            <h1 class="text-3xl font-extrabold text-white">Site Settings</h1>
+            <p class="text-zinc-400 text-sm mt-1">Customize your website browser title.</p>
           </div>
 
           <form onsubmit="window.handleSettingsSave(event)" class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 space-y-6">
             <div>
-              <label class="block text-xs font-bold text-amber-500 uppercase tracking-wider mb-2">Favicon Icon URL (.png, .svg, .ico)</label>
-              <input type="url" id="form-favicon-url" required placeholder="https://example.com/favicon.png" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-amber-500 text-sm">
-              <p class="text-xs text-zinc-500 mt-2">Paste a direct link to an image file to display as your website browser tab icon.</p>
-              
-              <!-- Favicon Preview -->
-              <div class="mt-4 flex items-center gap-4 bg-zinc-950 p-4 rounded-xl border border-zinc-800">
-                <span class="text-xs text-zinc-400 font-bold">Favicon Preview:</span>
-                <img id="favicon-preview-img" src="" class="w-8 h-8 object-contain bg-zinc-900 p-1 rounded border border-zinc-700">
-              </div>
-            </div>
-
-            <div>
               <label class="block text-xs font-bold text-zinc-400 mb-1">Website Browser Title</label>
-              <input type="text" id="form-site-title" required placeholder="Ameen — Calligrapher & Designer" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-amber-500 text-sm">
+              <input type="text" id="form-site-title" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-sky-500 text-sm text-white">
             </div>
 
             <div class="flex justify-end pt-4 border-t border-zinc-800">
-              <button type="submit" class="bg-amber-500 text-black font-extrabold px-8 py-3 rounded-xl hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/10">
-                Save Favicon & Settings
+              <button type="submit" class="bg-sky-500 text-white font-extrabold px-8 py-3 rounded-xl hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20">
+                Save Settings
               </button>
             </div>
             <div id="settings-save-status" class="hidden text-center text-sm text-green-400 font-bold p-3 bg-green-500/10 rounded-xl border border-green-500/20">
-              Favicon and Website Title updated!
+              Website title updated!
             </div>
           </form>
         </div>
@@ -611,24 +668,24 @@
           <form onsubmit="window.handleSecuritySave(event)" class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 space-y-6">
             <div>
               <label class="block text-xs font-bold text-zinc-400 mb-1 uppercase tracking-wider">Current Security PIN</label>
-              <input type="password" id="form-pin-current" required placeholder="Enter current PIN" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-lg font-mono tracking-widest focus:outline-none focus:border-amber-500">
+              <input type="password" id="form-pin-current" required placeholder="Enter current PIN" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-lg font-mono tracking-widest focus:outline-none focus:border-sky-500 text-white">
             </div>
 
             <div class="pt-4 border-t border-zinc-800 space-y-4">
               <div>
                 <label class="block text-xs font-bold text-zinc-400 mb-1 uppercase tracking-wider">New Security PIN</label>
-                <input type="password" id="form-pin-new" required placeholder="Enter new PIN" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-lg font-mono tracking-widest focus:outline-none focus:border-amber-500">
+                <input type="password" id="form-pin-new" required placeholder="Enter new PIN" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-lg font-mono tracking-widest focus:outline-none focus:border-sky-500 text-white">
               </div>
               <div>
                 <label class="block text-xs font-bold text-zinc-400 mb-1 uppercase tracking-wider">Confirm New PIN</label>
-                <input type="password" id="form-pin-confirm" required placeholder="Re-enter new PIN" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-lg font-mono tracking-widest focus:outline-none focus:border-amber-500">
+                <input type="password" id="form-pin-confirm" required placeholder="Re-enter new PIN" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-lg font-mono tracking-widest focus:outline-none focus:border-sky-500 text-white">
               </div>
             </div>
 
             <div id="security-msg" class="hidden text-center text-sm font-bold p-3 rounded-xl border"></div>
 
             <div class="flex justify-end pt-2">
-              <button type="submit" class="w-full bg-amber-500 text-black font-extrabold py-3.5 rounded-xl hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/10">
+              <button type="submit" class="w-full bg-sky-500 text-white font-extrabold py-3.5 rounded-xl hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20">
                 Update Security PIN
               </button>
             </div>
@@ -647,7 +704,7 @@
   </main>
 
   <!-- ========================================== -->
-  <!-- LIGHTBOX / FULLSCREEN ARTWORK MODAL        -->
+  <!-- LIGHTBOX MODAL                             -->
   <!-- ========================================== -->
   <div id="lightbox-modal" class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4" onclick="window.closeLightbox()">
     <button class="absolute top-6 right-6 text-white bg-zinc-900/80 p-3 rounded-full hover:bg-zinc-800">
@@ -662,7 +719,7 @@
   <div id="project-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
     <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 w-full max-w-3xl my-8 space-y-6">
       <div class="flex justify-between items-center border-b border-zinc-800 pb-4">
-        <h3 id="modal-project-title" class="text-2xl font-bold">Add New Project</h3>
+        <h3 id="modal-project-title" class="text-2xl font-bold text-white">Add New Project</h3>
         <button onclick="window.closeProjectModal()" class="text-zinc-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
       </div>
 
@@ -672,29 +729,29 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-bold text-zinc-400 mb-1">Title (English)</label>
-            <input type="text" id="form-title-en" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500">
+            <input type="text" id="form-title-en" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-white">
           </div>
           <div dir="rtl">
             <label class="block text-xs font-bold text-zinc-400 mb-1">العنوان (عربي)</label>
-            <input type="text" id="form-title-ar" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500">
+            <input type="text" id="form-title-ar" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-white">
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-bold text-zinc-400 mb-1">Description (English)</label>
-            <textarea id="form-desc-en" rows="3" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500"></textarea>
+            <textarea id="form-desc-en" rows="3" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-white"></textarea>
           </div>
           <div dir="rtl">
             <label class="block text-xs font-bold text-zinc-400 mb-1">الوصف (عربي)</label>
-            <textarea id="form-desc-ar" rows="3" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500"></textarea>
+            <textarea id="form-desc-ar" rows="3" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-white"></textarea>
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
             <label class="block text-xs font-bold text-zinc-400 mb-1">Category</label>
-            <select id="form-category" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500">
+            <select id="form-category" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-white">
               <option value="calligraphy">Arabic Calligraphy</option>
               <option value="graphic-design">Graphic Design</option>
               <option value="posters">Posters</option>
@@ -704,49 +761,54 @@
           </div>
           <div>
             <label class="block text-xs font-bold text-zinc-400 mb-1">Date</label>
-            <input type="text" id="form-date" placeholder="2025-02" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500">
+            <input type="text" id="form-date" placeholder="2025-02" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-white">
           </div>
           <div>
             <label class="block text-xs font-bold text-zinc-400 mb-1">Tools</label>
-            <input type="text" id="form-tools" placeholder="Illustrator, Procreate" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500">
+            <input type="text" id="form-tools" placeholder="Illustrator, Procreate" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-white">
           </div>
         </div>
 
+        <!-- Local Image File Picker for Project -->
         <div>
-          <label class="block text-xs font-bold text-zinc-400 mb-1">Artwork Image URL</label>
-          <input type="url" id="form-cover" required placeholder="https://images.unsplash.com/..." class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500">
+          <label class="block text-xs font-bold text-sky-400 uppercase tracking-wider mb-2">Upload Artwork Image from Device</label>
+          <input type="file" id="form-cover-file" accept="image/*" onchange="window.handleProjectImageUpload(event)" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-300 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-sky-500 file:text-white hover:file:bg-sky-400 cursor-pointer">
+          <input type="hidden" id="form-cover" required>
+          <div class="mt-3">
+            <img id="project-form-preview-img" src="" class="hidden w-32 h-32 rounded-xl object-cover border border-zinc-800">
+          </div>
         </div>
 
         <div>
           <label class="block text-xs font-bold text-zinc-400 mb-1">Tags (Comma separated)</label>
-          <input type="text" id="form-tags" placeholder="Ramadan, Thuluth, Gold" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-500">
+          <input type="text" id="form-tags" placeholder="Ramadan, Thuluth, Gold" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 focus:outline-none focus:border-sky-500 text-white">
         </div>
 
         <div class="flex gap-6 pt-2">
-          <label class="flex items-center gap-2 cursor-pointer text-sm">
-            <input type="checkbox" id="form-published" class="w-4 h-4 accent-amber-500">
+          <label class="flex items-center gap-2 cursor-pointer text-sm text-zinc-300">
+            <input type="checkbox" id="form-published" class="w-4 h-4 accent-sky-500">
             <span>Publish immediately</span>
           </label>
-          <label class="flex items-center gap-2 cursor-pointer text-sm">
-            <input type="checkbox" id="form-featured" class="w-4 h-4 accent-amber-500">
+          <label class="flex items-center gap-2 cursor-pointer text-sm text-zinc-300">
+            <input type="checkbox" id="form-featured" class="w-4 h-4 accent-sky-500">
             <span>Feature on Hero/Top</span>
           </label>
         </div>
 
         <div class="flex justify-end gap-4 border-t border-zinc-800 pt-4">
-          <button type="button" onclick="window.closeProjectModal()" class="px-5 py-2.5 rounded-xl border border-zinc-700 text-sm font-bold">Cancel</button>
-          <button type="submit" class="px-6 py-2.5 rounded-xl bg-amber-500 text-black text-sm font-extrabold hover:bg-amber-400">Save Artwork</button>
+          <button type="button" onclick="window.closeProjectModal()" class="px-5 py-2.5 rounded-xl border border-zinc-700 text-sm font-bold text-zinc-300">Cancel</button>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-sky-500 text-white text-sm font-extrabold hover:bg-sky-400">Save Artwork</button>
         </div>
       </form>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer id="public-footer" class="border-t border-zinc-900 py-12 bg-zinc-950">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
-      <div class="text-center sm:text-left rtl:sm:text-right">
-        <h4 class="text-xl font-extrabold text-white">AMEEN.</h4>
-        <p class="text-xs text-zinc-500 mt-1">Arabic Calligrapher • Graphic Designer • Digital Artist</p>
+  <footer id="public-footer" class="border-t border-zinc-900 py-16 bg-[#070a12]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="text-center md:text-left rtl:md:text-right">
+        <h4 class="text-2xl font-extrabold accent-gradient">AMEEN.</h4>
+        <p class="text-xs text-zinc-500 mt-1">Master Arabic Calligrapher • Graphic Designer • Digital Artist</p>
       </div>
       <div class="text-xs text-zinc-500">
         © <span id="year">2026</span> Ameen Portfolio. All Rights Reserved.
@@ -762,7 +824,6 @@
     import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, collection, onSnapshot, doc, setDoc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    // Application State
     let user = null;
     let app = null;
     let auth = null;
@@ -776,7 +837,6 @@
     let activeProjectId = null;
     let isAdminLoggedIn = false;
 
-    // Local Storage Helpers
     function getStoredData(key, fallback) {
       try {
         const item = localStorage.getItem(`ameen_cms_${key}`);
@@ -794,33 +854,28 @@
       }
     }
 
-    // Security Settings State (Reads from localStorage first)
     let securityData = getStoredData('security', { pin: 'ameen2026' });
 
-    // Website Settings & Favicon State
     let siteSettingsData = getStoredData('site', {
-      faviconUrl: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✍️</text></svg>',
-      siteTitle: 'Ameen — Arabic Calligrapher & Creative Designer'
+      siteTitle: 'Ameen — Master Arabic Calligrapher & Visual Artist'
     });
 
-    // Default About Profile Data
     let aboutData = getStoredData('about', {
       profileImg: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80',
       name_en: 'Ameen',
       name_ar: 'أمين',
-      role_en: 'Calligrapher & Visual Artist',
-      role_ar: 'خطاط وفنان بصري',
+      role_en: 'Master Calligrapher & Visual Artist',
+      role_ar: 'خطاط وفنان بصري محترف',
       bio_en: 'I am a professional creative artist specializing in blending traditional Arabic calligraphy with modern digital aesthetics. With expertise in graphic design, logo design, poster artwork, and branding, I craft visual experiences that preserve rich script heritage while commanding contemporary appeal.',
       bio_ar: 'أنا فنان تشكيلي متخصص في مزج الخط العربي التقليدي مع الجماليات الرقمية الحديثة. مع خبرة في تصميم الجرافيك والشعارات والملصقات وتطوير الهويات البصرية، أصنع تجارب بصرية تحفظ التراث الخطائي وتعبر عن العصر.'
     });
 
-    // Database Collections Data
     let projectsData = getStoredData('projects', [
       {
         id: '1',
         title_en: 'Ramadan Kareem Calligraphy',
         title_ar: 'مخطوطة رمضان كريم',
-        desc_en: 'A modern Thuluth composition for the holy month of Ramadan, blending traditional script proportions with a contemporary metallic gold digital finish.',
+        desc_en: 'A modern Thuluth composition for the holy month of Ramadan, blending traditional script proportions with a contemporary metallic cyan digital finish.',
         desc_ar: 'مخطوطة بخط الثلث الحديث لشهر رمضان المبارك، تمزج بين القواعد النفعية للخط العربي واللمسات الرقمية المعاصرة.',
         category: 'calligraphy',
         coverImg: 'https://images.unsplash.com/photo-1584285406059-002c98020a65?auto=format&fit=crop&q=80',
@@ -865,23 +920,22 @@
 
     let messagesData = getStoredData('messages', []);
 
-    // Translations Dictionary
     const dictionary = {
       en: {
-        home: "Home", projects: "Projects", about: "About", contact: "Contact", adminPanel: "Admin CMS",
-        heroBadge: "Creative Visual Studio", viewWork: "View My Work", aboutMe: "About Me",
-        portfolioSubtitle: "Selected Artworks", portfolioTitle: "Portfolio Gallery",
-        aboutTitle: "Craft & Heritage", aboutHeading: "Blending Arabic Typography with Modern Visual Identity",
+        home: "Home", projects: "Projects", services: "Services", about: "About", contact: "Contact", adminPanel: "Admin CMS",
+        heroBadge: "Master Calligrapher & Brand Architect", viewWork: "Explore Portfolio", aboutMe: "Meet The Artist",
+        portfolioSubtitle: "Selected Artworks", portfolioTitle: "Portfolio Gallery", servicesSub: "Expertise & Offerings",
+        aboutTitle: "Craft & Heritage", aboutHeading: "Bridging Ancient Arabic Script with Modern Visual Language",
         skillsTitle: "Core Capabilities", contactSub: "Get In Touch", contactTitle: "Let's Create Something Iconic",
         contactDesc: "Send a message for commissions, brand inquiries, or collaborative creative projects.",
         yourName: "Your Name", yourEmail: "Your Email", yourMessage: "Your Message", sendMessage: "Send Message",
         backToGallery: "Back to Gallery", date: "Date", toolsUsed: "Tools Used"
       },
       ar: {
-        home: "الرئيسية", projects: "أعمالي", about: "نبذة عني", contact: "تواصل معي", adminPanel: "لوحة التحكم",
-        heroBadge: "استوديو الفن البصري", viewWork: "استعرض الأعمال", aboutMe: "نبذة عني",
-        portfolioSubtitle: "أعمال مختارة", portfolioTitle: "معرض الأعمال",
-        aboutTitle: "الأصالة والتصميم", aboutHeading: "دمج الخط العربي مع الهوية البصرية الحديثة",
+        home: "الرئيسية", projects: "أعمالي", services: "الخدمات", about: "نبذة عني", contact: "تواصل معي", adminPanel: "لوحة التحكم",
+        heroBadge: "خطاط محترف ومهندس هوويات بصرية", viewWork: "استعرض الأعمال", aboutMe: "تعرف على الفنان",
+        portfolioSubtitle: "أعمال مختارة", portfolioTitle: "معرض الأعمال", servicesSub: "الخبرات والخدمات",
+        aboutTitle: "الأصالة والتصميم", aboutHeading: "ربط الخط العربي العريق بلغة التصميم المعاصر",
         skillsTitle: "المهارات الإبداعية", contactSub: "تواصل معي", contactTitle: "دعنا نصنع عملاً فنيًا متميزًا",
         contactDesc: "أرسل رسالة للاستفسارات عن الأعمال الفنية الخاصة والهويات البصرية.",
         yourName: "الاسم", yourEmail: "البريد الإلكتروني", yourMessage: "الرسالة", sendMessage: "إرسال الرسالة",
@@ -889,7 +943,6 @@
       }
     };
 
-    // Attach all handlers directly to window immediately
     window.navigateTo = navigateTo;
     window.scrollToSection = scrollToSection;
     window.toggleTheme = toggleTheme;
@@ -909,6 +962,8 @@
     window.handleAboutSave = handleAboutSave;
     window.handleSecuritySave = handleSecuritySave;
     window.handleSettingsSave = handleSettingsSave;
+    window.handleAboutImageUpload = handleAboutImageUpload;
+    window.handleProjectImageUpload = handleProjectImageUpload;
     window.togglePublishStatus = togglePublishStatus;
     window.deleteProject = deleteProject;
     window.editProject = editProject;
@@ -916,146 +971,56 @@
     window.deleteMessage = deleteMessage;
     window.renderGallery = renderGallery;
 
-    // Initialization Auth Listener & Firestore Sync
     document.addEventListener('DOMContentLoaded', async () => {
-      if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-      }
-
-      // Safe Firebase initialization
-      try {
-        const firebaseConfig = typeof __firebase_config !== 'undefined' && __firebase_config 
-          ? JSON.parse(__firebase_config) 
-          : null;
-
-        if (firebaseConfig && firebaseConfig.apiKey) {
-          app = initializeApp(firebaseConfig);
-          auth = getAuth(app);
-          db = getFirestore(app);
-
-          if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-            await signInWithCustomToken(auth, __initial_auth_token);
-          } else {
-            await signInAnonymously(auth);
-          }
-
-          onAuthStateChanged(auth, (u) => {
-            user = u;
-            if (user) {
-              setupFirestoreSync();
-            }
-          });
-        }
-      } catch (err) {
-        console.warn("Firebase Init skipped. Running in Local Storage Mode.");
-      }
-
+      if (typeof lucide !== 'undefined') lucide.createIcons();
       applySiteSettings();
       renderAboutSection();
       renderGallery();
-
-      // Listen to preview inputs
-      document.getElementById('form-about-img')?.addEventListener('input', (e) => {
-        document.getElementById('about-form-preview-img').src = e.target.value;
-      });
-      document.getElementById('form-favicon-url')?.addEventListener('input', (e) => {
-        document.getElementById('favicon-preview-img').src = e.target.value;
-      });
     });
 
-    function setupFirestoreSync() {
-      if (!user || !db) return;
-      const projectsRef = collection(db, 'artifacts', appId, 'users', user.uid, 'projects');
-      const msgsRef = collection(db, 'artifacts', appId, 'users', user.uid, 'messages');
-      const aboutRef = doc(db, 'artifacts', appId, 'users', user.uid, 'settings', 'about');
-      const securityRef = doc(db, 'artifacts', appId, 'users', user.uid, 'settings', 'security');
-      const settingsRef = doc(db, 'artifacts', appId, 'users', user.uid, 'settings', 'site');
+    window.handleAboutImageUpload = function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(uploadEvent) {
+        const base64 = uploadEvent.target.result;
+        document.getElementById('form-about-img').value = base64;
+        document.getElementById('about-form-preview-img').src = base64;
+      };
+      reader.readAsDataURL(file);
+    };
 
-      onSnapshot(projectsRef, (snapshot) => {
-        if (!snapshot.empty) {
-          projectsData = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-          projectsData.sort((a,b) => (b.createdAt || 0) - (a.createdAt || 0));
-        } else {
-          projectsData.forEach(async (p) => {
-            await setDoc(doc(projectsRef, p.id), p);
-          });
-        }
-        saveStoredData('projects', projectsData);
-        renderGallery();
-        renderAdminProjects();
-        updateAdminStats();
-      }, (err) => console.log(err.message));
-
-      onSnapshot(msgsRef, (snapshot) => {
-        messagesData = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-        messagesData.sort((a,b) => (b.createdAt || 0) - (a.createdAt || 0));
-        saveStoredData('messages', messagesData);
-        renderAdminMessages();
-        updateAdminStats();
-      }, (err) => console.log(err.message));
-
-      onSnapshot(aboutRef, (snapshot) => {
-        if (snapshot.exists()) {
-          aboutData = snapshot.data();
-          saveStoredData('about', aboutData);
-          renderAboutSection();
-          populateAboutForm();
-        } else {
-          setDoc(aboutRef, aboutData);
-        }
-      }, (err) => console.log(err.message));
-
-      onSnapshot(securityRef, (snapshot) => {
-        if (snapshot.exists()) {
-          securityData = snapshot.data();
-          saveStoredData('security', securityData);
-        } else {
-          setDoc(securityRef, securityData);
-        }
-      }, (err) => console.log(err.message));
-
-      onSnapshot(settingsRef, (snapshot) => {
-        if (snapshot.exists()) {
-          siteSettingsData = snapshot.data();
-          saveStoredData('site', siteSettingsData);
-          applySiteSettings();
-          populateSettingsForm();
-        } else {
-          setDoc(settingsRef, siteSettingsData);
-        }
-      }, (err) => console.log(err.message));
-    }
+    window.handleProjectImageUpload = function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(uploadEvent) {
+        const base64 = uploadEvent.target.result;
+        document.getElementById('form-cover').value = base64;
+        const preview = document.getElementById('project-form-preview-img');
+        preview.src = base64;
+        preview.classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+    };
 
     function applySiteSettings() {
-      const fav = document.getElementById('site-favicon');
       const titleTag = document.getElementById('site-title-tag');
-      if (fav && siteSettingsData.faviconUrl) fav.href = siteSettingsData.faviconUrl;
       if (titleTag && siteSettingsData.siteTitle) titleTag.textContent = siteSettingsData.siteTitle;
     }
 
     function populateSettingsForm() {
-      document.getElementById('form-favicon-url').value = siteSettingsData.faviconUrl || '';
-      document.getElementById('favicon-preview-img').src = siteSettingsData.faviconUrl || '';
       document.getElementById('form-site-title').value = siteSettingsData.siteTitle || '';
     }
 
     async function handleSettingsSave(e) {
       e.preventDefault();
       siteSettingsData = {
-        faviconUrl: document.getElementById('form-favicon-url').value,
         siteTitle: document.getElementById('form-site-title').value
       };
-
       saveStoredData('site', siteSettingsData);
-
-      if (user && db) {
-        try {
-          const settingsRef = doc(db, 'artifacts', appId, 'users', user.uid, 'settings', 'site');
-          await setDoc(settingsRef, siteSettingsData);
-        } catch(err) { console.error(err); }
-      }
-
       applySiteSettings();
+
       const status = document.getElementById('settings-save-status');
       status.classList.remove('hidden');
       setTimeout(() => status.classList.add('hidden'), 3500);
@@ -1083,7 +1048,7 @@
     async function handleAboutSave(e) {
       e.preventDefault();
       aboutData = {
-        profileImg: document.getElementById('form-about-img').value,
+        profileImg: document.getElementById('form-about-img').value || aboutData.profileImg,
         name_en: document.getElementById('form-about-name-en').value,
         name_ar: document.getElementById('form-about-name-ar').value,
         role_en: document.getElementById('form-about-role-en').value,
@@ -1093,15 +1058,8 @@
       };
 
       saveStoredData('about', aboutData);
-
-      if (user && db) {
-        try {
-          const aboutRef = doc(db, 'artifacts', appId, 'users', user.uid, 'settings', 'about');
-          await setDoc(aboutRef, aboutData);
-        } catch(err) { console.error(err); }
-      }
-
       renderAboutSection();
+
       const status = document.getElementById('about-save-status');
       status.classList.remove('hidden');
       setTimeout(() => status.classList.add('hidden'), 3500);
@@ -1139,13 +1097,6 @@
 
       securityData.pin = newPin;
       saveStoredData('security', securityData);
-
-      if (user && db) {
-        try {
-          const securityRef = doc(db, 'artifacts', appId, 'users', user.uid, 'settings', 'security');
-          await setDoc(securityRef, securityData);
-        } catch(err) { console.error(err); }
-      }
 
       msgBox.textContent = "Security PIN updated successfully!";
       msgBox.classList.add('bg-green-500/10', 'border-green-500/30', 'text-green-400');
@@ -1194,9 +1145,7 @@
     function scrollToSection(id) {
       if (currentRoute !== 'home') {
         navigateTo('home');
-        setTimeout(() => {
-          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
+        setTimeout(() => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); }, 100);
       } else {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
       }
@@ -1210,9 +1159,7 @@
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (dictionary[currentLang][key]) {
-          el.textContent = dictionary[currentLang][key];
-        }
+        if (dictionary[currentLang][key]) el.textContent = dictionary[currentLang][key];
       });
 
       if (currentLang === 'ar') {
@@ -1247,7 +1194,7 @@
       activeCategory = cat;
       document.querySelectorAll('.cat-btn').forEach(btn => {
         if (btn.getAttribute('data-cat') === cat) {
-          btn.className = "cat-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-amber-500 text-black shadow-lg shadow-amber-500/20";
+          btn.className = "cat-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-sky-500 text-white shadow-lg shadow-sky-500/20";
         } else {
           btn.className = "cat-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700";
         }
@@ -1270,14 +1217,16 @@
       grid.innerHTML = filtered.map(p => {
         const title = currentLang === 'ar' ? (p.title_ar || p.title_en) : (p.title_en || p.title_ar);
         return `
-          <div onclick="window.openDetail('${p.id}')" class="group cursor-pointer flex flex-col gap-4">
-            <div class="relative aspect-[4/5] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
+          <div onclick="window.openDetail('${p.id}')" class="group cursor-pointer flex flex-col gap-4 transform transition-all duration-300 hover:-translate-y-1.5">
+            <div class="relative aspect-[4/5] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl">
               <img src="${p.coverImg}" alt="${title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                <span class="text-xs font-bold bg-sky-500 text-white px-4 py-1.5 rounded-full uppercase tracking-wider">View Project</span>
+              </div>
             </div>
             <div>
-              <p class="text-amber-500 text-xs font-bold uppercase tracking-wider mb-1">${p.category}</p>
-              <h3 class="text-xl font-bold group-hover:text-amber-500 transition-colors text-zinc-100">${title}</h3>
+              <p class="text-sky-400 text-xs font-bold uppercase tracking-wider mb-1">${p.category}</p>
+              <h3 class="text-xl font-bold group-hover:text-sky-400 transition-colors text-zinc-100">${title}</h3>
             </div>
           </div>
         `;
@@ -1339,12 +1288,6 @@
       messagesData.push(msgObj);
       saveStoredData('messages', messagesData);
 
-      if (user && db) {
-        try {
-          await setDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'messages', msgObj.id), msgObj);
-        } catch(err) { console.error(err); }
-      }
-
       const status = document.getElementById('contact-status');
       status.textContent = currentLang === 'ar' ? 'تم إرسال رسالتك بنجاح!' : 'Your message has been sent successfully!';
       status.classList.remove('hidden');
@@ -1380,7 +1323,7 @@
         document.getElementById(`tab-btn-${t}`).className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800";
       });
       document.getElementById(`admin-tab-${tab}`).classList.remove('hidden');
-      document.getElementById(`tab-btn-${tab}`).className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors bg-amber-500/10 text-amber-500 font-bold";
+      document.getElementById(`tab-btn-${tab}`).className = "w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors bg-sky-500/10 text-sky-400 font-bold";
     }
 
     function updateAdminStats() {
@@ -1412,7 +1355,7 @@
           </td>
           <td class="p-4"><span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-800 text-zinc-300">${p.category}</span></td>
           <td class="p-4">
-            <button onclick="window.togglePublishStatus('${p.id}')" class="px-3 py-1 rounded-full text-xs font-bold ${p.published ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-amber-500/10 text-amber-500 border border-amber-500/20'}">
+            <button onclick="window.togglePublishStatus('${p.id}')" class="px-3 py-1 rounded-full text-xs font-bold ${p.published ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-sky-500/10 text-sky-400 border border-sky-500/20'}">
               ${p.published ? 'Published' : 'Draft'}
             </button>
           </td>
@@ -1434,14 +1377,14 @@
         return;
       }
       list.innerHTML = messagesData.map(m => `
-        <div class="p-6 rounded-2xl bg-zinc-900 border ${!m.read ? 'border-amber-500/50' : 'border-zinc-800'} space-y-3">
+        <div class="p-6 rounded-2xl bg-zinc-900 border ${!m.read ? 'border-sky-500/50' : 'border-zinc-800'} space-y-3">
           <div class="flex justify-between items-start">
             <div>
               <h4 class="font-bold text-white text-base">${m.name}</h4>
               <p class="text-xs text-zinc-500">${m.email} • ${new Date(m.createdAt).toLocaleDateString()}</p>
             </div>
             <div class="flex gap-2">
-              <button onclick="window.markMessageRead('${m.id}')" class="px-3 py-1 rounded-full text-xs font-bold border ${m.read ? 'border-zinc-700 text-zinc-500' : 'bg-amber-500 text-black'}">
+              <button onclick="window.markMessageRead('${m.id}')" class="px-3 py-1 rounded-full text-xs font-bold border ${m.read ? 'border-zinc-700 text-zinc-500' : 'bg-sky-500 text-white'}">
                 ${m.read ? 'Read' : 'Mark Read'}
               </button>
               <button onclick="window.deleteMessage('${m.id}')" class="p-1 text-red-400 hover:bg-red-500/10 rounded"><i data-lucide="trash" class="w-4 h-4"></i></button>
@@ -1470,11 +1413,16 @@
         document.getElementById('form-tags').value = Array.isArray(p.tags) ? p.tags.join(', ') : (p.tags || '');
         document.getElementById('form-published').checked = p.published;
         document.getElementById('form-featured').checked = p.featured;
+
+        const preview = document.getElementById('project-form-preview-img');
+        preview.src = p.coverImg;
+        preview.classList.remove('hidden');
       } else {
         document.getElementById('modal-project-title').textContent = "Add New Project";
         document.getElementById('project-form').reset();
         document.getElementById('form-project-id').value = '';
         document.getElementById('form-published').checked = true;
+        document.getElementById('project-form-preview-img').classList.add('hidden');
       }
     }
 
@@ -1485,6 +1433,11 @@
     async function handleProjectSave(e) {
       e.preventDefault();
       const id = document.getElementById('form-project-id').value || Date.now().toString();
+      const coverImg = document.getElementById('form-cover').value;
+      
+      const existing = projectsData.find(p => p.id === id);
+      const finalCover = coverImg || (existing ? existing.coverImg : 'https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&q=80');
+
       const payload = {
         id,
         title_en: document.getElementById('form-title-en').value,
@@ -1494,7 +1447,7 @@
         category: document.getElementById('form-category').value,
         date: document.getElementById('form-date').value,
         tools: document.getElementById('form-tools').value,
-        coverImg: document.getElementById('form-cover').value,
+        coverImg: finalCover,
         tags: document.getElementById('form-tags').value.split(',').map(s => s.trim()),
         published: document.getElementById('form-published').checked,
         featured: document.getElementById('form-featured').checked,
@@ -1506,13 +1459,6 @@
       else projectsData.unshift(payload);
 
       saveStoredData('projects', projectsData);
-
-      if (user && db) {
-        try {
-          await setDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'projects', id), payload);
-        } catch(err) { console.error(err); }
-      }
-
       renderGallery();
       renderAdminProjects();
       updateAdminStats();
@@ -1522,16 +1468,8 @@
     async function togglePublishStatus(id) {
       const p = projectsData.find(item => item.id === id);
       if (!p) return;
-      
       p.published = !p.published;
       saveStoredData('projects', projectsData);
-
-      if (user && db) {
-        try {
-          await updateDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'projects', id), { published: p.published });
-        } catch(err) { console.error(err); }
-      }
-
       renderGallery();
       renderAdminProjects();
       updateAdminStats();
@@ -1539,16 +1477,8 @@
 
     async function deleteProject(id) {
       if (!confirm("Are you sure you want to delete this project?")) return;
-      
       projectsData = projectsData.filter(p => p.id !== id);
       saveStoredData('projects', projectsData);
-
-      if (user && db) {
-        try {
-          await deleteDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'projects', id));
-        } catch(err) { console.error(err); }
-      }
-
       renderGallery();
       renderAdminProjects();
       updateAdminStats();
@@ -1561,32 +1491,16 @@
     async function markMessageRead(id) {
       const m = messagesData.find(item => item.id === id);
       if (!m) return;
-
       m.read = !m.read;
       saveStoredData('messages', messagesData);
-
-      if (user && db) {
-        try {
-          await updateDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'messages', id), { read: m.read });
-        } catch(err) { console.error(err); }
-      }
-
       renderAdminMessages();
       updateAdminStats();
     }
 
     async function deleteMessage(id) {
       if (!confirm("Delete message?")) return;
-
       messagesData = messagesData.filter(m => m.id !== id);
       saveStoredData('messages', messagesData);
-
-      if (user && db) {
-        try {
-          await deleteDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'messages', id));
-        } catch(err) { console.error(err); }
-      }
-
       renderAdminMessages();
       updateAdminStats();
     }
